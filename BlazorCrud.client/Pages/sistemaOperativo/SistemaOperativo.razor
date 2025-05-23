@@ -1,0 +1,192 @@
+﻿@page "/sistemaoperativo/{idSistemaOperativoEditar:guid?}/{ver:bool?}"
+
+@using BlazorCrud.Shared
+@using BlazorCrud.Client.Services
+@using CurrieTechnologies.Razor.SweetAlert2
+@using Radzen
+@using Radzen.Blazor
+
+@inject ISistemaOperativoService SistemaOperativoService
+@inject SweetAlertService Swal
+@inject NavigationManager navigation
+@inject NotificationService notificationService
+
+
+<RadzenCard class="rz-my-4 rz-mx-auto custom-rounded-grid">
+    <div class="mb-4">
+        <h1 class="m-2 text-xl font-semibold">@titulo</h1>
+    </div>
+    
+    <RadzenTemplateForm TItem="SistemaOperativoDTO" Data="@sistemaOperativo" Submit="@Guardar">
+        <div class="mb-4">
+            <!-- Label personalizado -->
+            @* <label class="block text-sm font-medium text-gray-700">Nombre</label> *@
+
+            <!-- Input Radzen con binding -->
+            @* <RadzenTextBox @bind-Value="sistemaOperativo.Nombre" Name="Nombre" Style="width: 100%;" /> *@
+            <RadzenFormField Text="Nombre" Style="width: 100%;">
+                <RadzenTextBox @bind-Value="sistemaOperativo.Nombre"
+                               Name="Nombre"
+                               Style="width: 100%;"
+                               ReadOnly="@soloLectura" />
+            </RadzenFormField>
+
+
+
+
+            <!-- Validador obligatorio conectado por 'Name' -->
+            <RadzenRequiredValidator Component="Nombre" Text="El nombre es requerido" Style="color: red;" />
+        </div>
+
+
+        @if (!soloLectura)
+        {
+            <div class="flex justify-end">
+                <div class="flex gap-2 justify-end">
+                    <RadzenButton Text="@btnTexto"
+                                  class="@((idSistemaOperativoEditar.HasValue ? "btn-actualizar" : "btn-editar"))"
+                                  Type="Submit" />
+                    <RadzenButton Text="Cancelar" class="btn-cancelar" Click="@(() => navigation.NavigateTo("/sistemasoperativos"))" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="flex justify-end">
+                <RadzenButton Text="Volver" class="btn-cancelar" Click="@(() => navigation.NavigateTo("/sistemasOperativos"))" />
+            </div>
+        }
+
+
+    </RadzenTemplateForm>
+</RadzenCard>
+
+
+
+
+
+
+@code {
+    [Parameter]
+    public Guid? idSistemaOperativoEditar { get; set; }
+
+    [Parameter]
+    public bool? ver { get; set; }
+
+    bool soloLectura => ver.HasValue && ver.Value;
+
+    SistemaOperativoDTO sistemaOperativo = new();
+    string titulo = string.Empty;
+    string btnTexto = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (idSistemaOperativoEditar.HasValue)
+        {
+            sistemaOperativo = await SistemaOperativoService.Buscar(idSistemaOperativoEditar.Value);
+            titulo = "Editar sistema operativo";
+            btnTexto = "Actualizar";
+        }
+        else
+        {
+            titulo = "Nuevo sistema operativo";
+            btnTexto = "Guardar";
+        }
+    }
+
+    private async Task Guardar()
+    {
+        if (string.IsNullOrWhiteSpace(sistemaOperativo.Nombre))
+        {
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Error de validación",
+                    Detail = "El nombre es requerido.",
+                    Duration = 4000
+                });
+            return;
+        }
+
+        if (sistemaOperativo.Nombre.Length < 3)
+        {
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Warning,
+                    Summary = "Longitud insuficiente",
+                    Detail = "El campo solicita al menos 3 caracteres.",
+                    Duration = 4000
+                });
+            return;
+        }
+
+        if (!System.Text.RegularExpressions.Regex.IsMatch(sistemaOperativo.Nombre, @".*[A-Za-z].*"))
+        {
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Nombre inválido",
+                    Detail = "El campo no puede ser sólo números.",
+                    Duration = 4000
+                });
+            return;
+        }
+
+        if (idSistemaOperativoEditar.HasValue)
+        {
+            var response = await SistemaOperativoService.Editar(sistemaOperativo, idSistemaOperativoEditar.Value);
+
+            if (!response.EsCorrecto)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error al actualizar",
+                        Detail = response.Mensaje ?? "Error desconocido.",
+                        Duration = 4000
+                    });
+                return;
+            }
+
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Sistema operativo actualizado",
+                    Detail = "El sistema operativo fue actualizado correctamente.",
+                    Duration = 3000
+                });
+        }
+
+        else
+        {
+            // Si estamos guardando, evaluamos la respuesta por si hay error (como duplicado)
+            var response = await SistemaOperativoService.Guardar(sistemaOperativo);
+
+            if (!response.EsCorrecto)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error al guardar",
+                        Detail = response.Mensaje ?? "Error desconocido.",
+                        Duration = 4000
+                    });
+                return;
+            }
+
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "SistemaOperativo guardada",
+                    Detail = "La sistemaOperativo se guardó correctamente.",
+                    Duration = 3000
+                });
+        }
+
+        navigation.NavigateTo("/sistemasoperativos");
+    }
+
+    
+
+
+}

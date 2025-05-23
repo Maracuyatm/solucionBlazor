@@ -1,0 +1,11 @@
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\bin\Debug\net8.0\BlazorCrud.Shared.deps.json
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\bin\Debug\net8.0\BlazorCrud.Shared.dll
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\bin\Debug\net8.0\BlazorCrud.Shared.pdb
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\BlazorCrud.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\BlazorCrud.Shared.AssemblyInfoInputs.cache
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\BlazorCrud.Shared.AssemblyInfo.cs
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\BlazorCrud.Shared.csproj.CoreCompileInputs.cache
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\BlazorCrud.Shared.dll
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\refint\BlazorCrud.Shared.dll
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\BlazorCrud.Shared.pdb
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\ref\BlazorCrud.Shared.dll

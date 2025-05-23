@@ -1,0 +1,36 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    @if (showSidebar)
+    {
+        <NavMenu />
+    }
+
+    <main class=" bg-gray-custom" style="@(showSidebar ? "margin-left: 250px;" : "margin-left: 0;")">
+        <RadzenNotification />
+
+        <div class="top-row px-4 d-flex align-items-center">
+            <button class="btn btn-link me-3" @onclick="ToggleSidebar" title="Toggle sidebar">
+                <span class="material-icons">menu</span>
+            </button>
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            <RadzenDialog />
+            @Body
+        </article>
+       
+
+    </main>
+
+</div>
+
+@code {
+    private bool showSidebar = true;
+
+    private void ToggleSidebar()
+    {
+        showSidebar = !showSidebar;
+    }
+}

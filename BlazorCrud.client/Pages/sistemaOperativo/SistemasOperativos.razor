@@ -1,0 +1,193 @@
+﻿@page "/sistemasoperativos"
+
+@using BlazorCrud.Shared
+@using BlazorCrud.Client.Services
+@using CurrieTechnologies.Razor.SweetAlert2
+@using Radzen
+@using Radzen.Blazor
+
+@inject ISistemaOperativoService SistemaOperativoService
+@inject SweetAlertService Swal
+@inject NavigationManager NavigationManager
+@inject NotificationService notificationService
+
+<RadzenCard class="rz-my-4 rz-mx-auto custom-rounded-grid">
+    <div class="flex items-center justify-between mb-4">
+        <h1 class="m-2 text-xl titulo">Sistemas operativos</h1>
+
+        <div class="flex items-center gap-2">
+            <div class="relative">
+                <input type="text" placeholder="Buscar..." class="input-buscador pl-10"
+                @bind="textoBusqueda" @bind:event="oninput" />
+            </div>
+
+            <RadzenButton class="btn-rounded btn-nuevo"  Text="Nuevo" Icon="add" Click="@(() => NavigationManager.NavigateTo("/sistemaoperativo"))" />
+        </div>
+    </div>
+
+    <RadzenStack Gap="1rem">
+        @if (listaSistemaOperativo == null)
+        {
+            <div class="text-center py-10 text-gray-500">Cargando...</div>
+        }
+        else
+        {
+            <RadzenDataGrid class="custom-rounded-grid no-row-highlight" @ref=grid Data="@listaFiltrada" TItem="SistemaOperativoDTO"
+                            AllowFiltering="false" AllowPaging="true" AllowSorting="true" PageSize="10"
+                            LogicalFilterOperator="@logicalFilterOperator"
+                            FilterCaseSensitivity="@filterCaseSensitivity">
+                <Columns>
+                    <RadzenDataGridColumn TItem="SistemaOperativoDTO" Property="Nombre" Title="Nombre" Filterable="false" />
+                    <RadzenDataGridColumn TItem="SistemaOperativoDTO" Title="Acciones" Filterable="false" Sortable="false" Width="150px">
+                        <Template Context="item">
+                            @if (item.Estado == 0)
+                            {
+                                <RadzenButton Text="Activar" Icon="check_circle" class="btn-actualizar" Size="ButtonSize.Small" Click="@(() => Activar(item.Id))" />
+                            }
+                            else
+                            {
+                                <RadzenButton Icon="edit" class="btn-editar" Size="ButtonSize.Small" Style="margin-right: 0.5rem;" Click="@(() => Editar(item.Id))" />
+                                <RadzenButton Icon="visibility" class="btn-ver" Size="ButtonSize.Small" Style="margin-right: 0.5rem;" Click="@(() => Ver(item.Id))" />
+                                <RadzenButton Icon="cancel" class="btn-eliminar" Size="ButtonSize.Small" Click="@(() => Desactivar(item.Id))" />
+                            }
+                        </Template>
+                    </RadzenDataGridColumn>
+                </Columns>
+            </RadzenDataGrid>
+        }
+
+    </RadzenStack>
+</RadzenCard>
+
+@code {
+    private string textoBusqueda = string.Empty;
+    private List<SistemaOperativoDTO>? listaSistemaOperativo;
+    private RadzenDataGrid<SistemaOperativoDTO> grid;
+    private LogicalFilterOperator logicalFilterOperator = LogicalFilterOperator.And;
+    private FilterCaseSensitivity filterCaseSensitivity = FilterCaseSensitivity.CaseInsensitive;
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaSistemaOperativo = await SistemaOperativoService.Lista();
+    }
+
+    private void Ver(Guid id)
+    {
+        NavigationManager.NavigateTo($"sistemaoperativo/{id}/true");
+    }
+
+    private void Editar(Guid id)
+    {
+        NavigationManager.NavigateTo($"sistemaoperativo/{id}");
+    }
+
+    private async Task Activar(Guid id)
+    {
+        var confirmacion = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "¿Activar sistema operativo?",
+                Text = "El sistema operativo será activado. ¿Deseas continuar?",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Sí, activar",
+                CancelButtonText = "Cancelar"
+            });
+
+        if (confirmacion.IsConfirmed)
+        {
+            try
+            {
+                await SistemaOperativoService.Activar(id);
+
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Success,
+                        Summary = "Sistema operativo activado",
+                        Detail = "El sistema operativo fue activado correctamente.",
+                        Duration = 3000
+                    });
+
+                listaSistemaOperativo = await SistemaOperativoService.Lista();
+                await grid.Reload();
+            }
+            catch (Exception ex)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error",
+                        Detail = $"No se pudo activar el sistema operativo: {ex.Message}",
+                        Duration = 4000
+                    });
+            }
+        }
+    }
+
+    private async Task Desactivar(Guid id)
+    {
+        var confirmacion = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "¿Desactivar sistema operativo?",
+                Text = "El sistema operativo será desactivado. ¿Deseas continuar?",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Sí, desactivar",
+                CancelButtonText = "Cancelar"
+            });
+
+        if (confirmacion.IsConfirmed)
+        {
+            try
+            {
+                await SistemaOperativoService.Desactivar(id);
+
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Info,
+                        Summary = "Sistema operativo desactivado",
+                        Detail = "El sistema operativo fue desactivado correctamente.",
+                        Duration = 3000
+                    });
+
+                listaSistemaOperativo = await SistemaOperativoService.Lista();
+                await grid.Reload();
+            }
+            catch (Exception ex)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error",
+                        Detail = $"No se pudo desactivar el sistema operativo: {ex.Message}",
+                        Duration = 4000
+                    });
+            }
+        }
+    }
+
+
+    // private async Task Eliminar(Guid id)
+    // {
+    //     var confirm = await Swal.FireAsync(new SweetAlertOptions
+    //         {
+    //             Title = "¿Eliminar sistemaoperativo?",
+    //             Text = "No podrás deshacer esto.",
+    //             Icon = SweetAlertIcon.Warning,
+    //             ShowCancelButton = true
+    //         });
+
+    //     if (confirm.IsConfirmed)
+    //     {
+    //         var eliminado = await SistemaOperativoService.Eliminar(id);
+    //         if (eliminado)
+    //         {
+    //             listaSistemaOperativo = listaSistemaOperativo!.Where(m => m.Id != id).ToList();
+    //             await grid.Reload();
+    //         }
+    //     }
+    // }
+    private List<SistemaOperativoDTO>? listaFiltrada => string.IsNullOrWhiteSpace(textoBusqueda)
+    ? listaSistemaOperativo
+    : listaSistemaOperativo?.Where(m => m.Nombre.Contains(textoBusqueda, StringComparison.OrdinalIgnoreCase)).ToList();
+
+}

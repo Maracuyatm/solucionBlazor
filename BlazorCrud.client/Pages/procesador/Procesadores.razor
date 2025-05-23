@@ -1,0 +1,193 @@
+﻿@page "/procesadores"
+
+@using BlazorCrud.Shared
+@using BlazorCrud.Client.Services
+@using CurrieTechnologies.Razor.SweetAlert2
+@using Radzen
+@using Radzen.Blazor
+
+@inject IProcesadorService ProcesadorService
+@inject SweetAlertService Swal
+@inject NavigationManager NavigationManager
+@inject NotificationService notificationService
+
+<RadzenCard class="rz-my-4 rz-mx-auto custom-rounded-grid">
+    <div class="flex items-center justify-between mb-4">
+        <h1 class="m-2 text-xl titulo">Procesadores</h1>
+
+        <div class="flex items-center gap-2">
+            <div class="relative">
+                <input type="text" placeholder="Buscar..." class="input-buscador pl-10"
+                @bind="textoBusqueda" @bind:event="oninput" />
+            </div>
+
+            <RadzenButton class="btn-rounded btn-nuevo"  Text="Nuevo" Icon="add" Click="@(() => NavigationManager.NavigateTo("/procesador"))" />
+        </div>
+    </div>
+
+    <RadzenStack Gap="1rem">
+        @if (listaProcesador == null)
+        {
+            <div class="text-center py-10 text-gray-500">Cargando...</div>
+        }
+        else
+        {
+            <RadzenDataGrid class="custom-rounded-grid no-row-highlight" @ref=grid Data="@listaFiltrada" TItem="ProcesadorDTO"
+                            AllowFiltering="false" AllowPaging="true" AllowSorting="true" PageSize="10"
+                            LogicalFilterOperator="@logicalFilterOperator"
+                            FilterCaseSensitivity="@filterCaseSensitivity">
+                <Columns>
+                    <RadzenDataGridColumn TItem="ProcesadorDTO" Property="Nombre" Title="Nombre" Filterable="false" />
+                    <RadzenDataGridColumn TItem="ProcesadorDTO" Title="Acciones" Filterable="false" Sortable="false" Width="150px">
+                        <Template Context="item">
+                            @if (item.Estado == 0)
+                            {
+                                <RadzenButton Text="Activar" Icon="check_circle" class="btn-actualizar" Size="ButtonSize.Small" Click="@(() => Activar(item.Id))" />
+                            }
+                            else
+                            {
+                                <RadzenButton Icon="edit" class="btn-editar" Size="ButtonSize.Small" Style="margin-right: 0.5rem;" Click="@(() => Editar(item.Id))" />
+                                <RadzenButton Icon="visibility" class="btn-ver" Size="ButtonSize.Small" Style="margin-right: 0.5rem;" Click="@(() => Ver(item.Id))" />
+                                <RadzenButton Icon="cancel" class="btn-eliminar" Size="ButtonSize.Small" Click="@(() => Desactivar(item.Id))" />
+                            }
+                        </Template>
+                    </RadzenDataGridColumn>
+                </Columns>
+            </RadzenDataGrid>
+        }
+
+    </RadzenStack>
+</RadzenCard>
+
+@code {
+    private string textoBusqueda = string.Empty;
+    private List<ProcesadorDTO>? listaProcesador;
+    private RadzenDataGrid<ProcesadorDTO> grid;
+    private LogicalFilterOperator logicalFilterOperator = LogicalFilterOperator.And;
+    private FilterCaseSensitivity filterCaseSensitivity = FilterCaseSensitivity.CaseInsensitive;
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaProcesador = await ProcesadorService.Lista();
+    }
+
+    private void Ver(Guid id)
+    {
+        NavigationManager.NavigateTo($"procesador/{id}/true");
+    }
+
+    private void Editar(Guid id)
+    {
+        NavigationManager.NavigateTo($"procesador/{id}");
+    }
+
+    private async Task Activar(Guid id)
+    {
+        var confirmacion = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "¿Activar procesador?",
+                Text = "El procesador será activado. ¿Deseas continuar?",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Sí, activar",
+                CancelButtonText = "Cancelar"
+            });
+
+        if (confirmacion.IsConfirmed)
+        {
+            try
+            {
+                await ProcesadorService.Activar(id);
+
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Success,
+                        Summary = "Procesador activado",
+                        Detail = "El procesador fue activado correctamente.",
+                        Duration = 3000
+                    });
+
+                listaProcesador = await ProcesadorService.Lista();
+                await grid.Reload();
+            }
+            catch (Exception ex)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error",
+                        Detail = $"No se pudo activar el procesador: {ex.Message}",
+                        Duration = 4000
+                    });
+            }
+        }
+    }
+
+    private async Task Desactivar(Guid id)
+    {
+        var confirmacion = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "¿Desactivar procesador?",
+                Text = "El procesador será desactivado. ¿Deseas continuar?",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Sí, desactivar",
+                CancelButtonText = "Cancelar"
+            });
+
+        if (confirmacion.IsConfirmed)
+        {
+            try
+            {
+                await ProcesadorService.Desactivar(id);
+
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Info,
+                        Summary = "Procesador desactivado",
+                        Detail = "El procesador fue desactivado correctamente.",
+                        Duration = 3000
+                    });
+
+                listaProcesador = await ProcesadorService.Lista();
+                await grid.Reload();
+            }
+            catch (Exception ex)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error",
+                        Detail = $"No se pudo desactivar el procesador: {ex.Message}",
+                        Duration = 4000
+                    });
+            }
+        }
+    }
+
+
+    // private async Task Eliminar(Guid id)
+    // {
+    //     var confirm = await Swal.FireAsync(new SweetAlertOptions
+    //         {
+    //             Title = "¿Eliminar procesador?",
+    //             Text = "No podrás deshacer esto.",
+    //             Icon = SweetAlertIcon.Warning,
+    //             ShowCancelButton = true
+    //         });
+
+    //     if (confirm.IsConfirmed)
+    //     {
+    //         var eliminado = await ProcesadorService.Eliminar(id);
+    //         if (eliminado)
+    //         {
+    //             listaProcesador = listaProcesador!.Where(m => m.Id != id).ToList();
+    //             await grid.Reload();
+    //         }
+    //     }
+    // }
+    private List<ProcesadorDTO>? listaFiltrada => string.IsNullOrWhiteSpace(textoBusqueda)
+    ? listaProcesador
+    : listaProcesador?.Where(m => m.Nombre.Contains(textoBusqueda, StringComparison.OrdinalIgnoreCase)).ToList();
+
+}

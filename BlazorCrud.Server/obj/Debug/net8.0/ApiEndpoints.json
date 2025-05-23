@@ -1,0 +1,424 @@
+[
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.DepartamentoController",
+    "Method": "Lista",
+    "RelativePath": "api/Departamento/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.EmpleadoController",
+    "Method": "Buscar",
+    "RelativePath": "api/Empleado/Buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.EmpleadoController",
+    "Method": "Editar",
+    "RelativePath": "api/Empleado/Editar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empleado",
+        "Type": "BlazorCrud.Shared.EmpleadoDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.EmpleadoController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Empleado/Eliminar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.EmpleadoController",
+    "Method": "Guardar",
+    "RelativePath": "api/Empleado/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empleado",
+        "Type": "BlazorCrud.Shared.EmpleadoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.EmpleadoController",
+    "Method": "Lista",
+    "RelativePath": "api/Empleado/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.MarcaController",
+    "Method": "Activar",
+    "RelativePath": "api/Marca/Activar/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.MarcaController",
+    "Method": "Buscar",
+    "RelativePath": "api/Marca/Buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.MarcaController",
+    "Method": "Desactivar",
+    "RelativePath": "api/Marca/Desactivar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.MarcaController",
+    "Method": "Editar",
+    "RelativePath": "api/Marca/Editar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "marcaDTO",
+        "Type": "BlazorCrud.Shared.MarcaDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.MarcaController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Marca/Eliminar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.MarcaController",
+    "Method": "Guardar",
+    "RelativePath": "api/Marca/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "marcaDTO",
+        "Type": "BlazorCrud.Shared.MarcaDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.MarcaController",
+    "Method": "Lista",
+    "RelativePath": "api/Marca/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ProcesadorController",
+    "Method": "Activar",
+    "RelativePath": "api/Procesador/Activar/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ProcesadorController",
+    "Method": "Buscar",
+    "RelativePath": "api/Procesador/Buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ProcesadorController",
+    "Method": "Desactivar",
+    "RelativePath": "api/Procesador/Desactivar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ProcesadorController",
+    "Method": "Editar",
+    "RelativePath": "api/Procesador/Editar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "procesadorDTO",
+        "Type": "BlazorCrud.Shared.ProcesadorDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ProcesadorController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Procesador/Eliminar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ProcesadorController",
+    "Method": "Guardar",
+    "RelativePath": "api/Procesador/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "procesadorDTO",
+        "Type": "BlazorCrud.Shared.ProcesadorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ProcesadorController",
+    "Method": "Lista",
+    "RelativePath": "api/Procesador/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.SistemaOperativoController",
+    "Method": "Activar",
+    "RelativePath": "api/SistemaOperativo/Activar/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.SistemaOperativoController",
+    "Method": "Buscar",
+    "RelativePath": "api/SistemaOperativo/Buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.SistemaOperativoController",
+    "Method": "Desactivar",
+    "RelativePath": "api/SistemaOperativo/Desactivar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.SistemaOperativoController",
+    "Method": "Editar",
+    "RelativePath": "api/SistemaOperativo/Editar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sistemaOperativoDTO",
+        "Type": "BlazorCrud.Shared.SistemaOperativoDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.SistemaOperativoController",
+    "Method": "Eliminar",
+    "RelativePath": "api/SistemaOperativo/Eliminar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.SistemaOperativoController",
+    "Method": "Guardar",
+    "RelativePath": "api/SistemaOperativo/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sistemaOperativoDTO",
+        "Type": "BlazorCrud.Shared.SistemaOperativoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.SistemaOperativoController",
+    "Method": "Lista",
+    "RelativePath": "api/SistemaOperativo/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

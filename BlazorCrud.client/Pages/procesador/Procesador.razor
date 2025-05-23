@@ -1,0 +1,186 @@
+﻿@page "/procesador/{idProcesadorEditar:guid?}/{ver:bool?}"
+
+@using BlazorCrud.Shared
+@using BlazorCrud.Client.Services
+@using CurrieTechnologies.Razor.SweetAlert2
+@using Radzen
+@using Radzen.Blazor
+
+@inject IProcesadorService ProcesadorService
+@inject SweetAlertService Swal
+@inject NavigationManager navigation
+@inject NotificationService notificationService
+
+
+<RadzenCard class="rz-my-4 rz-mx-auto custom-rounded-grid">
+    <div class="mb-4">
+        <h1 class="m-2 text-xl font-semibold">@titulo</h1>
+    </div>
+    
+    <RadzenTemplateForm TItem="ProcesadorDTO" Data="@procesador" Submit="@Guardar">
+        <div class="mb-4">
+            <!-- Label personalizado -->
+            <RadzenFormField Text="Nombre" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenTextBox @bind-Value="procesador.Nombre"
+                               Name="Nombre"
+                               Style="width: 100%;"
+                               ReadOnly="@soloLectura" />
+            </RadzenFormField>
+
+
+            <!-- Validador obligatorio conectado por 'Name' -->
+            <RadzenRequiredValidator Component="Nombre" Text="El nombre es requerido" Style="color: red;" />
+        </div>
+
+
+        @if (!soloLectura)
+        {
+            <div class="flex justify-end">
+                <div class="flex gap-2 justify-end">
+                    <RadzenButton Text="@btnTexto"
+                                  class="@((idProcesadorEditar.HasValue ? "btn-actualizar" : "btn-editar"))"
+                                  Type="Submit" />
+                    <RadzenButton Text="Cancelar" class="btn-cancelar" Click="@(() => navigation.NavigateTo("/procesadores"))" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="flex justify-end">
+                <RadzenButton Text="Volver" class="btn-cancelar" Click="@(() => navigation.NavigateTo("/procesadores"))" />
+            </div>
+        }
+
+
+    </RadzenTemplateForm>
+</RadzenCard>
+
+
+
+
+
+
+@code {
+    [Parameter]
+    public Guid? idProcesadorEditar { get; set; }
+
+    [Parameter]
+    public bool? ver { get; set; }
+
+    bool soloLectura => ver.HasValue && ver.Value;
+
+    ProcesadorDTO procesador = new();
+    string titulo = string.Empty;
+    string btnTexto = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (idProcesadorEditar.HasValue)
+        {
+            procesador = await ProcesadorService.Buscar(idProcesadorEditar.Value);
+            titulo = "Editar procesador";
+            btnTexto = "Actualizar";
+        }
+        else
+        {
+            titulo = "Nuevo procesador";
+            btnTexto = "Guardar";
+        }
+    }
+
+    private async Task Guardar()
+    {
+        if (string.IsNullOrWhiteSpace(procesador.Nombre))
+        {
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Error de validación",
+                    Detail = "El nombre es requerido.",
+                    Duration = 4000
+                });
+            return;
+        }
+
+        if (procesador.Nombre.Length < 3)
+        {
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Warning,
+                    Summary = "Longitud insuficiente",
+                    Detail = "El campo solicita al menos 3 caracteres.",
+                    Duration = 4000
+                });
+            return;
+        }
+
+        if (!System.Text.RegularExpressions.Regex.IsMatch(procesador.Nombre, @".*[A-Za-z].*"))
+        {
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Nombre inválido",
+                    Detail = "El campo no puede ser sólo números.",
+                    Duration = 4000
+                });
+            return;
+        }
+
+        if (idProcesadorEditar.HasValue)
+        {
+            var response = await ProcesadorService.Editar(procesador, idProcesadorEditar.Value);
+
+            if (!response.EsCorrecto)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error al actualizar",
+                        Detail = response.Mensaje ?? "Error desconocido.",
+                        Duration = 4000
+                    });
+                return;
+            }
+
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Procesador actualizado",
+                    Detail = "El procesador fue actualizado correctamente.",
+                    Duration = 3000
+                });
+        }
+
+        else
+        {
+            // Si estamos guardando, evaluamos la respuesta por si hay error (como duplicado)
+            var response = await ProcesadorService.Guardar(procesador);
+
+            if (!response.EsCorrecto)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error al guardar",
+                        Detail = response.Mensaje ?? "Error desconocido.",
+                        Duration = 4000
+                    });
+                return;
+            }
+
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Procesador guardado",
+                    Detail = "El procesador se guardó correctamente.",
+                    Duration = 3000
+                });
+        }
+
+        navigation.NavigateTo("/procesadores");
+    }
+
+    
+
+
+}
