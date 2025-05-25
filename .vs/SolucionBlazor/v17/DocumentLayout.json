@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\pages\\marca\\marcas.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\pages\\marca\\marcas.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\pages\\marca\\marca.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\pages\\marca\\marca.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -15,44 +11,16 @@
       "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\pages\\procesador\\procesadores.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\pages\\sistemaoperativo\\sistemaoperativo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\pages\\sistemaoperativo\\sistemaoperativo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88773A5E-595C-4C9D-B203-DBD12DFD1F49}|BlazorCrud.Server\\BlazorCrud.Server.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.server\\controllers\\sistemaoperativocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88773A5E-595C-4C9D-B203-DBD12DFD1F49}|BlazorCrud.Server\\BlazorCrud.Server.csproj|solutionrelative:blazorcrud.server\\controllers\\sistemaoperativocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\services\\sistemaoperativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\services\\sistemaoperativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\services\\isistemaoperativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\services\\isistemaoperativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\pages\\procesador\\procesador.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\pages\\procesador\\procesador.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\pages\\sistemaoperativo\\sistemasoperativos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\pages\\sistemaoperativo\\sistemasoperativos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\pages\\marca\\marcas.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\pages\\marca\\marcas.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{88773A5E-595C-4C9D-B203-DBD12DFD1F49}|BlazorCrud.Server\\BlazorCrud.Server.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.server\\models\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88773A5E-595C-4C9D-B203-DBD12DFD1F49}|BlazorCrud.Server\\BlazorCrud.Server.csproj|solutionrelative:blazorcrud.server\\models\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\services\\imarcaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|solutionrelative:blazorcrud.client\\services\\imarcaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36D1D955-924E-424F-8186-F535F51C5288}|BlazorCrud.client\\BlazorCrud.client.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.client\\services\\marcaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -61,14 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{88773A5E-595C-4C9D-B203-DBD12DFD1F49}|BlazorCrud.Server\\BlazorCrud.Server.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.server\\controllers\\marcacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88773A5E-595C-4C9D-B203-DBD12DFD1F49}|BlazorCrud.Server\\BlazorCrud.Server.csproj|solutionrelative:blazorcrud.server\\controllers\\marcacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{13AE6ECE-ACB8-489D-AAB7-468DF93836B7}|BlazorCrud.Shared\\BlazorCrud.Shared.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.shared\\sistemaoperativodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13AE6ECE-ACB8-489D-AAB7-468DF93836B7}|BlazorCrud.Shared\\BlazorCrud.Shared.csproj|solutionrelative:blazorcrud.shared\\sistemaoperativodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88773A5E-595C-4C9D-B203-DBD12DFD1F49}|BlazorCrud.Server\\BlazorCrud.Server.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.server\\models\\sistemaoperativo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88773A5E-595C-4C9D-B203-DBD12DFD1F49}|BlazorCrud.Server\\BlazorCrud.Server.csproj|solutionrelative:blazorcrud.server\\models\\sistemaoperativo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{88773A5E-595C-4C9D-B203-DBD12DFD1F49}|BlazorCrud.Server\\BlazorCrud.Server.csproj|c:\\users\\neilt\\source\\repos\\solucionblazor\\blazorcrud.server\\models\\dbcrudblazorcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -86,244 +46,130 @@
       "DocumentGroups": [
         {
           "DockedWidth": 204,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SistemasOperativos.razor",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\sistemaOperativo\\SistemasOperativos.razor",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Pages\\sistemaOperativo\\SistemasOperativos.razor",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\sistemaOperativo\\SistemasOperativos.razor",
-              "RelativeToolTip": "BlazorCrud.client\\Pages\\sistemaOperativo\\SistemasOperativos.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T01:17:51.35Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Procesador.razor",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\procesador\\Procesador.razor",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Pages\\procesador\\Procesador.razor",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\procesador\\Procesador.razor",
-              "RelativeToolTip": "BlazorCrud.client\\Pages\\procesador\\Procesador.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T00:39:17.064Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Procesadores.razor",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\procesador\\Procesadores.razor",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Pages\\procesador\\Procesadores.razor",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\procesador\\Procesadores.razor",
-              "RelativeToolTip": "BlazorCrud.client\\Pages\\procesador\\Procesadores.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T00:39:14.871Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "MarcaService.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\MarcaService.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Services\\MarcaService.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\MarcaService.cs",
-              "RelativeToolTip": "BlazorCrud.client\\Services\\MarcaService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T00:25:29.338Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "BlazorCrud.client\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T00:16:02.287Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Marcas.razor",
               "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\marca\\Marcas.razor",
               "RelativeDocumentMoniker": "BlazorCrud.client\\Pages\\marca\\Marcas.razor",
               "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\marca\\Marcas.razor",
               "RelativeToolTip": "BlazorCrud.client\\Pages\\marca\\Marcas.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T00:13:34.631Z",
+              "WhenOpened": "2025-05-25T20:20:13.438Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Marca.razor",
               "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\marca\\Marca.razor",
               "RelativeDocumentMoniker": "BlazorCrud.client\\Pages\\marca\\Marca.razor",
               "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\marca\\Marca.razor",
               "RelativeToolTip": "BlazorCrud.client\\Pages\\marca\\Marca.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T00:13:18.405Z",
+              "WhenOpened": "2025-05-25T20:13:21.644Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "MarcaController.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Controllers\\MarcaController.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.Server\\Controllers\\MarcaController.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Controllers\\MarcaController.cs",
-              "RelativeToolTip": "BlazorCrud.Server\\Controllers\\MarcaController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "IMarcaService.cs",
+              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\IMarcaService.cs",
+              "RelativeDocumentMoniker": "BlazorCrud.client\\Services\\IMarcaService.cs",
+              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\IMarcaService.cs",
+              "RelativeToolTip": "BlazorCrud.client\\Services\\IMarcaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T23:51:54.203Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Marca.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Models\\Marca.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.Server\\Models\\Marca.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Models\\Marca.cs",
-              "RelativeToolTip": "BlazorCrud.Server\\Models\\Marca.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T23:43:38.039Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "MarcaDTO.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Shared\\MarcaDTO.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.Shared\\MarcaDTO.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Shared\\MarcaDTO.cs",
-              "RelativeToolTip": "BlazorCrud.Shared\\MarcaDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T23:41:48.588Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 214,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Program.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Program.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Program.cs",
-              "RelativeToolTip": "BlazorCrud.client\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T00:28:12.793Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SistemaOperativo.razor",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\sistemaOperativo\\SistemaOperativo.razor",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Pages\\sistemaOperativo\\SistemaOperativo.razor",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\sistemaOperativo\\SistemaOperativo.razor",
-              "RelativeToolTip": "BlazorCrud.client\\Pages\\sistemaOperativo\\SistemaOperativo.razor",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAIMAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T00:11:39.352Z",
+              "WhenOpened": "2025-05-25T20:06:46.822Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SistemaOperativoService.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\SistemaOperativoService.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Services\\SistemaOperativoService.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\SistemaOperativoService.cs",
-              "RelativeToolTip": "BlazorCrud.client\\Services\\SistemaOperativoService.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Title": "MarcaService.cs",
+              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\MarcaService.cs",
+              "RelativeDocumentMoniker": "BlazorCrud.client\\Services\\MarcaService.cs",
+              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\MarcaService.cs",
+              "RelativeToolTip": "BlazorCrud.client\\Services\\MarcaService.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAIwDUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T00:08:06.924Z"
+              "WhenOpened": "2025-05-25T19:22:15.164Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ISistemaOperativoService.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\ISistemaOperativoService.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Services\\ISistemaOperativoService.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Services\\ISistemaOperativoService.cs",
-              "RelativeToolTip": "BlazorCrud.client\\Services\\ISistemaOperativoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Title": "MarcaController.cs",
+              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Controllers\\MarcaController.cs",
+              "RelativeDocumentMoniker": "BlazorCrud.Server\\Controllers\\MarcaController.cs",
+              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Controllers\\MarcaController.cs",
+              "RelativeToolTip": "BlazorCrud.Server\\Controllers\\MarcaController.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAA0wCMBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T00:06:34.204Z"
+              "WhenOpened": "2025-05-25T19:05:17.283Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 7,
               "Title": "DbcrudBlazorContext.cs",
               "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Models\\DbcrudBlazorContext.cs",
               "RelativeDocumentMoniker": "BlazorCrud.Server\\Models\\DbcrudBlazorContext.cs",
               "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Models\\DbcrudBlazorContext.cs",
               "RelativeToolTip": "BlazorCrud.Server\\Models\\DbcrudBlazorContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAowIUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T00:00:31.75Z"
+              "WhenOpened": "2025-05-25T18:52:43.897Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SistemaOperativoController.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Controllers\\SistemaOperativoController.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.Server\\Controllers\\SistemaOperativoController.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Controllers\\SistemaOperativoController.cs",
-              "RelativeToolTip": "BlazorCrud.Server\\Controllers\\SistemaOperativoController.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAIwBYAAAAwAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Marca.cs",
+              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Models\\Marca.cs",
+              "RelativeDocumentMoniker": "BlazorCrud.Server\\Models\\Marca.cs",
+              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Models\\Marca.cs",
+              "RelativeToolTip": "BlazorCrud.Server\\Models\\Marca.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T23:52:36.681Z"
+              "WhenOpened": "2025-05-25T18:49:35.614Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "BlazorCrud.client\\Layout\\MainLayout.razor",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "BlazorCrud.client\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAHAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "MarcaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Shared\\MarcaDTO.cs",
+              "RelativeDocumentMoniker": "BlazorCrud.Shared\\MarcaDTO.cs",
+              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Shared\\MarcaDTO.cs",
+              "RelativeToolTip": "BlazorCrud.Shared\\MarcaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T18:43:24.997Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 204,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Procesadores.razor",
+              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\procesador\\Procesadores.razor",
+              "RelativeDocumentMoniker": "BlazorCrud.client\\Pages\\procesador\\Procesadores.razor",
+              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.client\\Pages\\procesador\\Procesadores.razor",
+              "RelativeToolTip": "BlazorCrud.client\\Pages\\procesador\\Procesadores.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T00:46:50.757Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "SistemaOperativo.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Models\\SistemaOperativo.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.Server\\Models\\SistemaOperativo.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Server\\Models\\SistemaOperativo.cs",
-              "RelativeToolTip": "BlazorCrud.Server\\Models\\SistemaOperativo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T23:43:34.393Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "SistemaOperativoDTO.cs",
-              "DocumentMoniker": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Shared\\SistemaOperativoDTO.cs",
-              "RelativeDocumentMoniker": "BlazorCrud.Shared\\SistemaOperativoDTO.cs",
-              "ToolTip": "C:\\Users\\neilt\\source\\repos\\SolucionBlazor\\BlazorCrud.Shared\\SistemaOperativoDTO.cs",
-              "RelativeToolTip": "BlazorCrud.Shared\\SistemaOperativoDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T23:41:51.268Z"
+              "WhenOpened": "2025-05-25T20:18:36.812Z",
+              "EditorCaption": ""
             }
           ]
         }

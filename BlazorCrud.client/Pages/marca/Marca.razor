@@ -7,35 +7,49 @@
 @using Radzen.Blazor
 
 @inject IMarcaService MarcaService
+@inject ITipoActivoService TipoActivoService
 @inject SweetAlertService Swal
 @inject NavigationManager navigation
 @inject NotificationService notificationService
-
 
 <RadzenCard class="rz-my-4 rz-mx-auto custom-rounded-grid">
     <div class="mb-4">
         <h1 class="m-2 text-xl font-semibold">@titulo</h1>
     </div>
-    
+
     <RadzenTemplateForm TItem="MarcaDTO" Data="@marca" Submit="@Guardar">
-        <div class="mb-4">
-            <!-- Label personalizado -->
-            <RadzenFormField Text="Nombre" Variant="Variant.Flat" Style="width: 100%;">
-                <RadzenTextBox @bind-Value="marca.Nombre"
-                               Name="Nombre"
-                               Style="width: 100%;"
-                               ReadOnly="@soloLectura" />
-            </RadzenFormField>
+        <div class="flex flex-wrap gap-4">
+            <div class="w-full md:w-1/2">
+                <RadzenFormField Text="Tipo de Activo" Variant="Variant.Flat" Style="width: 100%;">
+                    <RadzenDropDown @bind-Value="marca.TipoActivoId"
+                                    Data="@tipoActivo"
+                                    TextProperty="Nombre"
+                                    ValueProperty="Id"
+                                    Name="TipoActivoId"
+                                    Style="width: 100%;"
+                                    Disabled="@DeshabilitarTipoActivo" />
+                </RadzenFormField>
+                @if (!DeshabilitarTipoActivo)
+                {
+                    <RadzenRequiredValidator Component="TipoActivoId" Text="El tipo de activo es requerido" Style="color: red;" />
+                }
+            </div>
 
-
-            <!-- Validador obligatorio conectado por 'Name' -->
-            <RadzenRequiredValidator Component="Nombre" Text="El nombre es requerido" Style="color: red;" />
+            <div class="w-full md:w-1/2">
+                <RadzenFormField Text="Nombre" Variant="Variant.Flat" Style="width: 100%;">
+                    <RadzenTextBox @bind-Value="marca.Nombre"
+                                   Name="Nombre"
+                                   Style="width: 100%;"
+                                   ReadOnly="@soloLectura" />
+                </RadzenFormField>
+                <RadzenRequiredValidator Component="Nombre" Text="El nombre es requerido" Style="color: red;" />
+                <RadzenLengthValidator Component="Nombre" Min="3" Text="El nombre debe tener al menos 3 caracteres" Style="color: red;" />
+            </div>
         </div>
-
 
         @if (!soloLectura)
         {
-            <div class="flex justify-end">
+            <div class="flex justify-end mt-4">
                 <div class="flex gap-2 justify-end">
                     <RadzenButton Text="@btnTexto"
                                   class="@((idMarcaEditar.HasValue ? "btn-actualizar" : "btn-editar"))"
@@ -46,18 +60,12 @@
         }
         else
         {
-            <div class="flex justify-end">
+            <div class="flex justify-end mt-4">
                 <RadzenButton Text="Volver" class="btn-cancelar" Click="@(() => navigation.NavigateTo("/marcas"))" />
             </div>
         }
-
-
     </RadzenTemplateForm>
 </RadzenCard>
-
-
-
-
 
 
 @code {
@@ -69,20 +77,35 @@
 
     bool soloLectura => ver.HasValue && ver.Value;
 
-    MarcaDTO marca = new();
-    string titulo = string.Empty;
-    string btnTexto = string.Empty;
+    // Nueva propiedad que indica si el dropdown de TipoActivo debe estar deshabilitado:
+    bool DeshabilitarTipoActivo => soloLectura || idMarcaEditar.HasValue;
 
-    protected override async Task OnInitializedAsync()
+    private List<TipoActivoDTO> tipoActivo = new();
+    private MarcaDTO marca = new();
+    private string titulo = string.Empty;
+    private string btnTexto = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
     {
+        tipoActivo = await TipoActivoService.Lista() ?? new List<TipoActivoDTO>();
+
         if (idMarcaEditar.HasValue)
         {
-            marca = await MarcaService.Buscar(idMarcaEditar.Value);
-            titulo = "Editar marca";
+            var marcaBuscada = await MarcaService.Buscar(idMarcaEditar.Value);
+            if (marcaBuscada == null)
+            {
+                NotifyError("Marca no encontrada.");
+                navigation.NavigateTo("/marcas");
+                return;
+            }
+
+            marca = marcaBuscada;
+            titulo = soloLectura ? "Ver marca" : "Editar marca";
             btnTexto = "Actualizar";
         }
         else
         {
+            marca = new MarcaDTO();
             titulo = "Nueva marca";
             btnTexto = "Guardar";
         }
@@ -90,39 +113,29 @@
 
     private async Task Guardar()
     {
+        // Validaciones comunes
         if (string.IsNullOrWhiteSpace(marca.Nombre))
         {
-            notificationService.Notify(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Error,
-                    Summary = "Error de validación",
-                    Detail = "El nombre es requerido.",
-                    Duration = 4000
-                });
+            NotifyError("El nombre es requerido.");
             return;
         }
 
         if (marca.Nombre.Length < 3)
         {
-            notificationService.Notify(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Warning,
-                    Summary = "Longitud insuficiente",
-                    Detail = "El campo solicita al menos 3 caracteres.",
-                    Duration = 4000
-                });
+            NotifyWarning("El campo solicita al menos 3 caracteres.");
             return;
         }
 
         if (!System.Text.RegularExpressions.Regex.IsMatch(marca.Nombre, @".*[A-Za-z].*"))
         {
-            notificationService.Notify(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Error,
-                    Summary = "Nombre inválido",
-                    Detail = "El campo no puede ser sólo números.",
-                    Duration = 4000
-                });
+            NotifyError("El campo no puede ser sólo números.");
+            return;
+        }
+
+        // Validación adicional para creación: tipo activo debe estar seleccionado
+        if (!idMarcaEditar.HasValue && (marca.TipoActivoId == null || marca.TipoActivoId == Guid.Empty))
+        {
+            NotifyError("Debe seleccionar al menos un tipo de activo.");
             return;
         }
 
@@ -132,55 +145,58 @@
 
             if (!response.EsCorrecto)
             {
-                notificationService.Notify(new NotificationMessage
-                    {
-                        Severity = NotificationSeverity.Error,
-                        Summary = "Error al actualizar",
-                        Detail = response.Mensaje ?? "Error desconocido.",
-                        Duration = 4000
-                    });
+                NotifyError(response.Mensaje ?? "Error desconocido al actualizar.");
                 return;
             }
 
-            notificationService.Notify(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Success,
-                    Summary = "Marca actualizada",
-                    Detail = "La marca fue actualizada correctamente.",
-                    Duration = 3000
-                });
+            NotifySuccess("La marca fue actualizada correctamente.");
         }
-
         else
         {
-            // Si estamos guardando, evaluamos la respuesta por si hay error (como duplicado)
             var response = await MarcaService.Guardar(marca);
 
             if (!response.EsCorrecto)
             {
-                notificationService.Notify(new NotificationMessage
-                    {
-                        Severity = NotificationSeverity.Error,
-                        Summary = "Error al guardar",
-                        Detail = response.Mensaje ?? "Error desconocido.",
-                        Duration = 4000
-                    });
+                NotifyError(response.Mensaje ?? "Error desconocido al guardar.");
                 return;
             }
 
-            notificationService.Notify(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Success,
-                    Summary = "Marca guardada",
-                    Detail = "La marca se guardó correctamente.",
-                    Duration = 3000
-                });
+            NotifySuccess("La marca se guardó correctamente.");
         }
 
         navigation.NavigateTo("/marcas");
     }
 
-    
+    private void NotifyError(string message)
+    {
+        notificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = "Error",
+                Detail = message,
+                Duration = 4000
+            });
+    }
 
+    private void NotifyWarning(string message)
+    {
+        notificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Warning,
+                Summary = "Advertencia",
+                Detail = message,
+                Duration = 4000
+            });
+    }
 
+    private void NotifySuccess(string message)
+    {
+        notificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Success,
+                Summary = "Éxito",
+                Detail = message,
+                Duration = 3000
+            });
+    }
 }

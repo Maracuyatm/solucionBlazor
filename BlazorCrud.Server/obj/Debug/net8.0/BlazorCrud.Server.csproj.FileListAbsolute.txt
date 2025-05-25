@@ -172,3 +172,4 @@ C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Server\obj\Debug\net8.0\re
 C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Server\bin\Debug\net8.0\BlazorCrud.Shared.dll
 C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Server\bin\Debug\net8.0\BlazorCrud.Shared.pdb
 C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Server\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Server\obj\Debug\net8.0\BlazorCrud.Server.sourcelink.json

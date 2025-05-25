@@ -9,3 +9,4 @@ C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\Bl
 C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\refint\BlazorCrud.Shared.dll
 C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\BlazorCrud.Shared.pdb
 C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\ref\BlazorCrud.Shared.dll
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net8.0\BlazorCrud.Shared.sourcelink.json

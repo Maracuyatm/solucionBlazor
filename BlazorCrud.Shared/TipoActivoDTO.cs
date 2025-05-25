@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlazorCrud.Shared
 {
-    public class TipoActivo
+    public class TipoActivoDTO
     {
         public Guid Id { get; set; }
 

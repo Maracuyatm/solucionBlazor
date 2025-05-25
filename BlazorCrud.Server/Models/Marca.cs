@@ -6,6 +6,8 @@ namespace BlazorCrud.Server.Models
     public partial class Marca
     {
         public Guid Id { get; set; }  // Clave primaria GUID
+        public Guid TipoActivoId { get; set; }
+        public TipoActivo TipoActivo { get; set; } // ← navegación para el join
         public string Nombre { get; set; } = null!;  // Nombre de la marca
 
         public DateTime CreatedAt { get; set; }  // Fecha de creación

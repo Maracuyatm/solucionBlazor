@@ -16,9 +16,12 @@ builder.Services.AddScoped<IDepartamentoService, DepartamentoService>();
 builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
 builder.Services.AddScoped<IMarcaService, MarcaService>();
 builder.Services.AddScoped<IProcesadorService, ProcesadorService>();
+builder.Services.AddScoped<IActivoService, ActivoService>();
+builder.Services.AddScoped<ITipoActivoService, TipoActivoService>();
 builder.Services.AddScoped<ISistemaOperativoService, SistemaOperativoService>();
 builder.Services.AddScoped<NotificationService>();
 builder.Services.AddScoped<DialogService>();
+
 
 
 

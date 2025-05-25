@@ -23,30 +23,28 @@ namespace BlazorCrud.Server.Controllers
         public async Task<IActionResult> Lista()
         {
             var responseApi = new ResponseAPI<List<MarcaDTO>>();
-            var listaMarcaDTO = new List<MarcaDTO>();
 
             try
             {
                 var marcas = await _dbContext.Marca
                     .Where(m => m.DeletedAt == null)
+                    .Include(m => m.TipoActivo)
                     .OrderByDescending(m => m.CreatedAt)
+                    .Select(m => new MarcaDTO
+                    {
+                        Id = m.Id,
+                        Nombre = m.Nombre,
+                        TipoActivoId = m.TipoActivoId,
+                        Tipo = m.TipoActivo.Nombre,
+                        Estado = m.Estado,
+                        CreatedAt = m.CreatedAt,
+                        UpdatedAt = m.UpdatedAt,
+                        DeletedAt = m.DeletedAt
+                    })
                     .ToListAsync();
 
-                foreach (var item in marcas)
-                {
-                    listaMarcaDTO.Add(new MarcaDTO
-                    {
-                        Id = item.Id,
-                        Nombre = item.Nombre,
-                        CreatedAt = item.CreatedAt,
-                        UpdatedAt = item.UpdatedAt,
-                        DeletedAt = item.DeletedAt,
-                        Estado = item.Estado
-                    });
-                }
-
                 responseApi.EsCorrecto = true;
-                responseApi.Valor = listaMarcaDTO;
+                responseApi.Valor = marcas;
             }
             catch (Exception ex)
             {
@@ -57,8 +55,7 @@ namespace BlazorCrud.Server.Controllers
             return Ok(responseApi);
         }
 
-
-        // Buscar marca por ID
+        //Buscar marca
         [HttpGet("Buscar/{id}")]
         public async Task<IActionResult> Buscar(Guid id)
         {
@@ -66,7 +63,9 @@ namespace BlazorCrud.Server.Controllers
 
             try
             {
-                var dbMarca = await _dbContext.Marca.FirstOrDefaultAsync(m => m.Id == id);
+                var dbMarca = await _dbContext.Marca
+                    .Include(m => m.TipoActivo) // ← join con TipoActivo
+                    .FirstOrDefaultAsync(m => m.Id == id && m.DeletedAt == null); // soft delete
 
                 if (dbMarca != null)
                 {
@@ -75,9 +74,12 @@ namespace BlazorCrud.Server.Controllers
                     {
                         Id = dbMarca.Id,
                         Nombre = dbMarca.Nombre,
+                        TipoActivoId = dbMarca.TipoActivoId,
+                        Tipo = dbMarca.TipoActivo?.Nombre ?? string.Empty, // ← por si es null
                         CreatedAt = dbMarca.CreatedAt,
                         UpdatedAt = dbMarca.UpdatedAt,
-                        DeletedAt = dbMarca.DeletedAt
+                        DeletedAt = dbMarca.DeletedAt,
+                        Estado = dbMarca.Estado
                     };
                 }
                 else
@@ -96,7 +98,7 @@ namespace BlazorCrud.Server.Controllers
         }
 
 
-        // Guardar una nueva marca
+        //Guardar marca
         [HttpPost("Guardar")]
         public async Task<IActionResult> Guardar(MarcaDTO marcaDTO)
         {
@@ -104,9 +106,17 @@ namespace BlazorCrud.Server.Controllers
 
             try
             {
-                // Validar que no exista una marca con el mismo nombre (ignorando mayúsculas/minúsculas)
+                // Validación del modelo (opcional, si usas atributos [Required])
+                if (!ModelState.IsValid)
+                {
+                    responseApi.EsCorrecto = false;
+                    responseApi.Mensaje = "Datos inválidos.";
+                    return BadRequest(responseApi);
+                }
+
+                // Verifica si ya existe una marca con el mismo nombre (insensible a mayúsculas)
                 bool existeNombre = await _dbContext.Marca
-                    .AnyAsync(m => m.Nombre.ToLower() == marcaDTO.Nombre.ToLower() && m.DeletedAt == null);
+                    .AnyAsync(m => m.Nombre.ToUpper() == marcaDTO.Nombre.ToUpper() && m.DeletedAt == null);
 
                 if (existeNombre)
                 {
@@ -118,7 +128,8 @@ namespace BlazorCrud.Server.Controllers
                 var dbMarca = new Marca
                 {
                     Id = Guid.NewGuid(),
-                    Nombre = marcaDTO.Nombre,
+                    Nombre = marcaDTO.Nombre.Trim(),
+                    TipoActivoId = marcaDTO.TipoActivoId,
                     Estado = 1,
                     CreatedAt = DateTime.UtcNow
                 };
@@ -139,6 +150,7 @@ namespace BlazorCrud.Server.Controllers
         }
 
 
+
         // Editar una marca existente
         [HttpPut("Editar/{id}")]
         public async Task<IActionResult> Editar(MarcaDTO marcaDTO, Guid id)
@@ -147,7 +159,8 @@ namespace BlazorCrud.Server.Controllers
 
             try
             {
-                var dbMarca = await _dbContext.Marca.FirstOrDefaultAsync(m => m.Id == id);
+                var dbMarca = await _dbContext.Marca
+                    .FirstOrDefaultAsync(m => m.Id == id && m.DeletedAt == null);
 
                 if (dbMarca == null)
                 {
@@ -156,10 +169,9 @@ namespace BlazorCrud.Server.Controllers
                     return NotFound(responseApi);
                 }
 
-                // Verificar si ya existe otra marca con el mismo nombre
                 bool nombreDuplicado = await _dbContext.Marca
                     .AnyAsync(m => m.Id != id &&
-                                   m.Nombre.ToLower() == marcaDTO.Nombre.ToLower() &&
+                                   m.Nombre.ToUpper() == marcaDTO.Nombre.ToUpper() &&
                                    m.DeletedAt == null);
 
                 if (nombreDuplicado)
@@ -169,7 +181,8 @@ namespace BlazorCrud.Server.Controllers
                     return BadRequest(responseApi);
                 }
 
-                dbMarca.Nombre = marcaDTO.Nombre;
+                dbMarca.Nombre = marcaDTO.Nombre.Trim();
+                dbMarca.Estado = marcaDTO.Estado;
                 dbMarca.UpdatedAt = DateTime.UtcNow;
 
                 _dbContext.Marca.Update(dbMarca);
@@ -191,16 +204,36 @@ namespace BlazorCrud.Server.Controllers
         [HttpPost("Activar/{id}")]
         public async Task<IActionResult> Activar(Guid id)
         {
-            var marca = await _dbContext.Marca.FindAsync(id);
-            if (marca == null)
-                return NotFound();
+            var responseApi = new ResponseAPI<bool>();
 
-            marca.Estado = 1; // o el valor que indique activo
-            _dbContext.Marca.Update(marca);
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                var marca = await _dbContext.Marca.FindAsync(id);
 
-            return NoContent();
+                if (marca == null || marca.DeletedAt != null)
+                {
+                    responseApi.EsCorrecto = false;
+                    responseApi.Mensaje = "Marca no encontrada.";
+                    return NotFound(responseApi);
+                }
+
+                marca.Estado = 1;
+                marca.UpdatedAt = DateTime.UtcNow;
+
+                await _dbContext.SaveChangesAsync();
+
+                responseApi.EsCorrecto = true;
+                responseApi.Valor = true;
+            }
+            catch (Exception ex)
+            {
+                responseApi.EsCorrecto = false;
+                responseApi.Mensaje = ex.Message;
+            }
+
+            return Ok(responseApi);
         }
+
 
 
         [HttpPut("Desactivar/{id}")]
@@ -221,6 +254,7 @@ namespace BlazorCrud.Server.Controllers
 
                 marca.Estado = 0;
                 marca.UpdatedAt = DateTime.UtcNow;
+
                 await _dbContext.SaveChangesAsync();
 
                 responseApi.EsCorrecto = true;
@@ -245,15 +279,17 @@ namespace BlazorCrud.Server.Controllers
             try
             {
                 var marca = await _dbContext.Marca.FirstOrDefaultAsync(m => m.Id == id);
-                if (marca == null)
+
+                if (marca == null || marca.DeletedAt != null)
                 {
                     responseApi.EsCorrecto = false;
-                    responseApi.Mensaje = "Marca no encontrada";
+                    responseApi.Mensaje = "Marca no encontrada o ya eliminada.";
                     return NotFound(responseApi);
                 }
 
-                // Realizar el Soft Delete: solo actualiza el campo DeletedAt
-                marca.DeletedAt = DateTime.Now;
+                marca.DeletedAt = DateTime.UtcNow;
+                marca.UpdatedAt = DateTime.UtcNow;
+
                 _dbContext.Marca.Update(marca);
                 await _dbContext.SaveChangesAsync();
 
@@ -268,6 +304,7 @@ namespace BlazorCrud.Server.Controllers
 
             return Ok(responseApi);
         }
+
 
     }
 }

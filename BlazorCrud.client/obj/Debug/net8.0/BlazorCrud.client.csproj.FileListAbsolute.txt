@@ -1053,8 +1053,9 @@ C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\bin\Debug\net8.0\ww
 C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\bin\Debug\net8.0\Radzen.Blazor.dll
 C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\webcil\Radzen.Blazor.wasm
 C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\e2w4i8iptt-572sicptqx.gz
-C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\x8466vjtge-t7xqbbzylh.gz
-C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\uj9js9696w-x0n2gc6isd.gz
-C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\sdlhyxq5gw-emducyjgxt.gz
-C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\rtgi7qtg8m-p9ly4jec73.gz
-C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\3mkccagxf5-7tgb7mst79.gz
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\BlazorCrud.client.sourcelink.json
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\x8466vjtge-j9uygo1etd.gz
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\uj9js9696w-eutofy3m2p.gz
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\sdlhyxq5gw-xwo8abhqxt.gz
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\rtgi7qtg8m-590i7g1ci7.gz
+C:\Users\neilt\source\repos\SolucionBlazor\BlazorCrud.client\obj\Debug\net8.0\compressed\3mkccagxf5-5i2e1a1bl8.gz

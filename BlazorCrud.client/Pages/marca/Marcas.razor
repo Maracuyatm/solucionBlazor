@@ -32,13 +32,13 @@
         }
         else
         {
-            <RadzenDataGrid class="custom-rounded-grid no-row-highlight" @ref=grid Data="@listaFiltrada" TItem="MarcaDTO"
-                            AllowFiltering="false" AllowPaging="true" AllowSorting="true" PageSize="10"
-                            LogicalFilterOperator="@logicalFilterOperator"
-                            FilterCaseSensitivity="@filterCaseSensitivity">
+            <RadzenDataGrid class="custom-rounded-grid no-row-highlight" @ref="grid" Data="@listaFiltrada" TItem="MarcaDTO"
+                            AllowPaging="true" PageSize="5"
+                            AllowSorting="true" AllowFiltering="false">
                 <Columns>
-                    <RadzenDataGridColumn TItem="MarcaDTO" Property="Nombre" Title="Nombre" Filterable="false" />
-                    <RadzenDataGridColumn TItem="MarcaDTO" Title="Acciones" Filterable="false" Sortable="false" Width="150px">
+                    <RadzenDataGridColumn TItem="MarcaDTO" Property="Nombre" Title="Nombre" />
+                    <RadzenDataGridColumn TItem="MarcaDTO" Property="Tipo" Title="Tipo de Activo" />
+                    <RadzenDataGridColumn TItem="MarcaDTO" Title="Acciones" Width="150px" Sortable="false" Filterable="false">
                         <Template Context="item">
                             @if (item.Estado == 0)
                             {
@@ -54,6 +54,7 @@
                     </RadzenDataGridColumn>
                 </Columns>
             </RadzenDataGrid>
+
         }
 
     </RadzenStack>

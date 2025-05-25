@@ -1,0 +1,329 @@
+﻿@page "/activo/{idActivoEditar:guid?}/{ver:bool?}"
+
+@using BlazorCrud.Shared
+@using BlazorCrud.Client.Services
+@using CurrieTechnologies.Razor.SweetAlert2
+@using Radzen
+@using Radzen.Blazor
+
+@inject IActivoService ActivoService
+@inject ITipoActivoService TipoActivoService
+@inject ISistemaOperativoService SistemaOperativoService
+@inject IProcesadorService ProcesadorService
+@inject IMarcaService MarcaService
+
+
+@inject SweetAlertService Swal
+@inject NavigationManager navigation
+@inject NotificationService notificationService
+
+<RadzenCard class="rz-my-4 rz-mx-auto custom-rounded-grid">
+    <div class="mb-4">
+        <h1 class="m-2 text-xl font-semibold">@titulo</h1>
+    </div>
+
+    <RadzenTemplateForm TItem="ActivoDTO" Data="@activo" Submit="@Guardar">
+        <!-- TipoActivo -->
+        <div class="mb-4">
+            <RadzenFormField Text="Tipo de Activo" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenDropDown @bind-Value="activo.TipoActivoId"
+                                Data="@tipoActivo"
+                                TextProperty="Nombre"
+                                ValueProperty="Id"
+                                Name="TipoActivoId"
+                                Style="width: 100%;"
+                                Disabled="@soloLectura" />
+            </RadzenFormField>
+            <RadzenRequiredValidator Component="TipoActivoId" Text="El tipo de activo es requerido" Style="color: red;" />
+        </div>
+        <!-- Marca -->
+        <div class="mb-4">
+            <RadzenFormField Text="Marca" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenDropDown @bind-Value="activo.MarcaId"
+                                Data="@marca"
+                                TextProperty="Nombre"
+                                ValueProperty="Id"
+                                Name="MarcaId"
+                                Style="width: 100%;"
+                                Disabled="@soloLectura" />
+            </RadzenFormField>
+            <RadzenRequiredValidator Component="TipoActivoId" Text="El tipo de activo es requerido" Style="color: red;" />
+        </div>
+
+
+
+        @* <!-- Estado -->
+        <div class="mb-4">
+            <RadzenFormField Text="Estado" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenDropDown @bind-Value="activo.EstadoId"
+                                Data="@estados"
+                                TextProperty="Descripcion"
+                                ValueProperty="Id"
+                                Name="EstadoId"
+                                Style="width: 100%;"
+                                Disabled="@soloLectura" />
+            </RadzenFormField>
+            <RadzenRequiredValidator Component="EstadoId" Text="El estado es requerido" Style="color: red;" />
+        </div> *@
+
+        <!-- Serial -->
+        <div class="mb-4">
+            <RadzenFormField Text="Número de Serie" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenTextBox @bind-Value="activo.Serial"
+                               Name="Serial"
+                               Style="width: 100%;"
+                               ReadOnly="@soloLectura" />
+            </RadzenFormField>
+            <RadzenRequiredValidator Component="Serial" Text="El número de serie es requerido" Style="color: red;" />
+            <RadzenLengthValidator Component="Serial" MaxLength="50" Text="El serial no puede superar los 50 caracteres" Style="color: red;" />
+        </div>
+
+        <!-- Sistema Operativo -->
+        <div class="mb-4">
+            <RadzenFormField Text="Sistema Operativo" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenDropDown @bind-Value="activo.SistemaOperativoId"
+                                Data="@sistemaOperativo"
+                                TextProperty="Nombre"
+                                ValueProperty="Id"
+                                Name="SistemaOperativoId"
+                                Style="width: 100%;"
+                                Disabled="@soloLectura"
+                                AllowClear="true" />
+            </RadzenFormField>
+        </div>
+
+        <!-- Modelo -->
+        <div class="mb-4">
+            <RadzenFormField Text="Modelo" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenTextBox @bind-Value="activo.Modelo"
+                               Name="Modelo"
+                               Style="width: 100%;"
+                               ReadOnly="@soloLectura" />
+            </RadzenFormField>
+            <RadzenLengthValidator Component="Modelo" MaxLength="50" Text="El modelo no puede superar los 50 caracteres" Style="color: red;" />
+        </div>
+
+        <!-- Procesador -->
+        <div class="mb-4">
+            <RadzenFormField Text="Procesador" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenDropDown @bind-Value="activo.Procesador"
+                                Data="@procesador"
+                                TextProperty="Nombre"
+                                ValueProperty="Id"
+                                Name="Procesador"
+                                Style="width: 100%;"
+                                Disabled="@soloLectura"
+                                AllowClear="true" />
+            </RadzenFormField>
+        </div>
+
+        <!-- Descripcion -->
+        <div class="mb-4">
+            <RadzenFormField Text="Descripción" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenTextBox @bind-Value="activo.Descripcion"
+                               Name="Descripcion"
+                               Style="width: 100%;"
+                               ReadOnly="@soloLectura" />
+            </RadzenFormField>
+            <RadzenRequiredValidator Component="Descripcion" Text="El nombre es requerido" Style="color: red;" />
+            <RadzenLengthValidator Component="Descripcion" MaxLength="250" Text="El nombre no puede superar los 250 caracteres" Style="color: red;" />
+        </div>
+
+        <!-- Número -->
+        <div class="mb-4">
+            <RadzenFormField Text="Número" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenNumeric @bind-Value="activo.Numero"
+                               Name="Numero"
+                               Style="width: 100%;"
+                               ReadOnly="@soloLectura" />
+            </RadzenFormField>
+        </div>
+
+        <!-- RAM -->
+        <div class="mb-4">
+            <RadzenFormField Text="RAM (GB)" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenNumeric @bind-Value="activo.Ram"
+                               Name="Ram"
+                               Style="width: 100%;"
+                               ReadOnly="@soloLectura" />
+            </RadzenFormField>
+        </div>
+
+        <!-- Almacenamiento -->
+        <div class="mb-4">
+            <RadzenFormField Text="Almacenamiento (GB)" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenNumeric @bind-Value="activo.Almacenamiento"
+                               Name="Almacenamiento"
+                               Style="width: 100%;"
+                               ReadOnly="@soloLectura" />
+            </RadzenFormField>
+        </div>
+
+        <!-- Fecha de Adquisición -->
+        <div class="mb-4">
+            <RadzenFormField Text="Fecha de Adquisición" Variant="Variant.Flat" Style="width: 100%;">
+                <RadzenDatePicker @bind-Value="activo.FechaAdquisicion"
+                                  Name="FechaAdquisicion"
+                                  Style="width: 100%;"
+                                  Disabled="@soloLectura" />
+            </RadzenFormField>
+            <RadzenRequiredValidator Component="FechaAdquisicion" Text="La fecha de adquisición es requerida" Style="color: red;" />
+        </div>
+
+        <!-- Botones -->
+        @if (!soloLectura)
+        {
+            <div class="flex justify-end">
+                <div class="flex gap-2 justify-end">
+                    <RadzenButton Text="@btnTexto"
+                                  class="@((idActivoEditar.HasValue ? "btn-actualizar" : "btn-editar"))"
+                                  Type="Submit" />
+                    <RadzenButton Text="Cancelar" class="btn-cancelar" Click="@(() => navigation.NavigateTo("/activos"))" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="flex justify-end">
+                <RadzenButton Text="Volver" class="btn-cancelar" Click="@(() => navigation.NavigateTo("/activos"))" />
+            </div>
+        }
+    </RadzenTemplateForm>
+</RadzenCard>
+
+@code {
+    [Parameter]
+    public Guid? idActivoEditar { get; set; }
+
+    [Parameter]
+    public bool? ver { get; set; }
+
+    ActivoDTO activo = new();
+    string titulo = string.Empty;
+    string btnTexto = string.Empty;
+    bool soloLectura => ver.HasValue && ver.Value;
+
+    private List<TipoActivoDTO> tipoActivo = new();
+    private List<MarcaDTO> marca = new();
+    private List<SistemaOperativoDTO> sistemaOperativo = new();
+    private List<ProcesadorDTO> procesador = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var todasLasMarcas = await MarcaService.Lista();
+        marca = todasLasMarcas.Where(m => m.Estado == 1).ToList();
+
+        tipoActivo = await TipoActivoService.Lista();
+        sistemaOperativo = await SistemaOperativoService.Lista();
+        procesador = await ProcesadorService.Lista();
+       
+
+        if (idActivoEditar.HasValue)
+        {
+            activo = await ActivoService.Buscar(idActivoEditar.Value);
+            titulo = "Editar activo";
+            btnTexto = "Actualizar";
+        }
+        else
+        {
+            titulo = "Nuevo activo";
+            btnTexto = "Guardar";
+        }
+    }
+
+    private async Task Guardar()
+    {
+        if (string.IsNullOrWhiteSpace(activo.Descripcion))
+        {
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Error de validación",
+                    Detail = "El nombre es requerido.",
+                    Duration = 4000
+                });
+            return;
+        }
+
+        if (activo.Descripcion.Length < 3)
+        {
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Warning,
+                    Summary = "Longitud insuficiente",
+                    Detail = "El campo solicita al menos 3 caracteres.",
+                    Duration = 4000
+                });
+            return;
+        }
+
+        if (!System.Text.RegularExpressions.Regex.IsMatch(activo.Descripcion, @".*[A-Za-z].*"))
+        {
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Descripcion inválido",
+                    Detail = "El campo no puede ser sólo números.",
+                    Duration = 4000
+                });
+            return;
+        }
+
+        if (idActivoEditar.HasValue)
+        {
+            var response = await ActivoService.Editar(activo, idActivoEditar.Value);
+
+            if (!response.EsCorrecto)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error al actualizar",
+                        Detail = response.Mensaje ?? "Error desconocido.",
+                        Duration = 4000
+                    });
+                return;
+            }
+
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Activo actualizada",
+                    Detail = "La activo fue actualizada correctamente.",
+                    Duration = 3000
+                });
+        }
+
+        else
+        {
+            // Si estamos guardando, evaluamos la respuesta por si hay error (como duplicado)
+            var response = await ActivoService.Guardar(activo);
+
+            if (!response.EsCorrecto)
+            {
+                notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error al guardar",
+                        Detail = response.Mensaje ?? "Error desconocido.",
+                        Duration = 4000
+                    });
+                return;
+            }
+
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Activo guardada",
+                    Detail = "La activo se guardó correctamente.",
+                    Duration = 3000
+                });
+        }
+
+        navigation.NavigateTo("/activos");
+    }
+
+
+
+
+}

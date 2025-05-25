@@ -1,5 +1,68 @@
 [
   {
+    "ContainingType": "BlazorCrud.Server.Controllers.ActivoController",
+    "Method": "Buscar",
+    "RelativePath": "api/Activo/Buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ActivoController",
+    "Method": "Editar",
+    "RelativePath": "api/Activo/Editar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BlazorCrud.Shared.ActivoDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ActivoController",
+    "Method": "Guardar",
+    "RelativePath": "api/Activo/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BlazorCrud.Shared.ActivoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.ActivoController",
+    "Method": "Lista",
+    "RelativePath": "api/Activo/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlazorCrud.Server.Controllers.DepartamentoController",
     "Method": "Lista",
     "RelativePath": "api/Departamento/Lista",
@@ -415,6 +478,16 @@
     "ContainingType": "BlazorCrud.Server.Controllers.SistemaOperativoController",
     "Method": "Lista",
     "RelativePath": "api/SistemaOperativo/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlazorCrud.Server.Controllers.TipoActivoController",
+    "Method": "Lista",
+    "RelativePath": "api/TipoActivo/Lista",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

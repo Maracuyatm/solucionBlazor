@@ -5,6 +5,114 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Activo/Lista": {
+      "get": {
+        "tags": [
+          "Activo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Activo/Buscar/{id}": {
+      "get": {
+        "tags": [
+          "Activo"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Activo/Guardar": {
+      "post": {
+        "tags": [
+          "Activo"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivoDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivoDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivoDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Activo/Editar/{id}": {
+      "put": {
+        "tags": [
+          "Activo"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivoDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivoDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivoDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Departamento/Lista": {
       "get": {
         "tags": [
@@ -678,10 +786,112 @@
           }
         }
       }
+    },
+    "/api/TipoActivo/Lista": {
+      "get": {
+        "tags": [
+          "TipoActivo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "ActivoDTO": {
+        "required": [
+          "descripcion",
+          "estadoId",
+          "fechaAdquisicion",
+          "marcaId",
+          "serial",
+          "tipoActivoId"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "tipoActivoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "marcaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "estadoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "serial": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "sistemaOperativoId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "modelo": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "procesador": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "descripcion": {
+            "maxLength": 250,
+            "minLength": 0,
+            "type": "string"
+          },
+          "numero": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ram": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "almacenamiento": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fechaAdquisicion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DepartamentoDTO": {
         "type": "object",
         "properties": {
@@ -743,6 +953,14 @@
           "id": {
             "type": "string",
             "format": "uuid"
+          },
+          "tipoActivoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "tipo": {
+            "type": "string",
+            "nullable": true
           },
           "nombre": {
             "minLength": 3,
