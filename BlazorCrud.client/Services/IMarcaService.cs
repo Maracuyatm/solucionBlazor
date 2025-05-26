@@ -14,7 +14,7 @@ namespace BlazorCrud.Client.Services
 
         Task<bool> Desactivar(Guid id);
 
-        Task<bool> ExisteMarcaConNombreYTipoAsync(string nombre, Guid tipoActivoId, Guid? idMarcaExcluir = null);
+        //Task<bool> ExisteMarcaConNombreYTipoAsync(string nombre, Guid tipoActivoId, Guid? idMarcaExcluir = null);
 
 
         Task<bool> Eliminar(Guid id);
